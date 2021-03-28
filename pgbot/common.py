@@ -151,50 +151,63 @@ ILLEGAL_ATTRIBUTES = (
 
 
 BOT_HELP_PROMPT = {
-    "title": (
-        "Help",
-    ),
+    "title": "Help",
 
-    "message": (f"""
+    "body": f"""
 Hey there, do you want to use <@{BOT_ID}> ?
 My command prefix is `pg`.
-**Get Help**
+If you want me to run your code, use Discord's code block syntax.
+Learn more about Discord code formatting **[HERE](https://discord.com/channels/772505616680878080/774217896971730974/785510505728311306)**.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━""",
+
+    "color": 0xFFFF00,
+
+    "fields": (
+                ("__**Get Help**__", """
 ```
 !help
 !doc
 !clock
 ```
-**Run Code**
+`pg!help`
+Ask me for help
+
+`pg!doc [module.Class.method]`
+Look up the docstring of a Python/Pygame object, e.g `str` or `pygame.Rect`
+
+`pg!clock`
+24 Hour Clock showing <@&778205389942030377> 's
+who are available to help
+""", True),
+            ("__**Run Code**__", """
 ```
 !exec
 ```
-**Play With Me :snake:**
+`pg!exec
+[python code block]`
+Run python code in an isolated environment.
+`import` is not available. Various methods of builtin objects have been disabled for security reasons.
+The available preimported modules are:
+`math, cmath, random, re, time, string, itertools, pygame`.
+""", True),
+            ("__**Play With Me :snake: **__", """
 ```
 !pet
 !vibecheck
 !sorry
 !bonkcheck
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-__**Get Help:**__
-`pg!help` - Ask me for help
-`pg!doc [module.Class.method]` - Look up the docstring of a Python/Pygame object, e.g `builtins.string` or `pygame.Rect`
-`pg!clock` - 24 Hour Clock showing @ Helpfulie ☉ 's who are available to help
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-__**Run Code:**__
-`pg!exec [python code block]` - Run python code in an isolated environment.
-`import` is not available. Various methods of builtin objects have been disabled for security reasons.
-The available preimported modules are: `math, cmath, random, re, time, string, itertools, pygame`.
-If you want me to run your code, use Discord's code block syntax.
-Learn more about Discord code formatting **[here](https://discord.com/channels/772505616680878080/774217896971730974/785510505728311306)**.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-__**Play With Me :snake: :**__
-`pg!pet` - Pet me :3 . Don't pet me too much or I will get mad.
-`pg!vibecheck` - Check my mood.
-`pg!sorry` - You were hitting me {BONK}, and you're now trying to apologize? Let's see what I'll say :unamused:
-`pg!bonkcheck` -  Check how many times you have done me harm.
-    """,
-                ),
+`pg!pet`
+Pet me :3 . Don't pet me too much or I will get mad.
 
-    "color": (0xFF00FF,)
+`pg!vibecheck`
+Check my mood.
+
+`pg!sorry`
+You were hitting me :pg_bonk: , and you're now trying to apologize? Let's see what I'll say :unamused:
+
+`pg!bonkcheck`
+Check how many times you have done me harm.
+""", True),
+    ),
 }

@@ -115,14 +115,16 @@ def get_embed_fields(messages):
 
     return field_datas
 
-
-async def edit_embed(message, title, description, color=0xFFFFAA, url_image=None):
+async def edit_embed(message, title, description, color=0xFFFFAA, url_image=None, fields=[]):
     """
     Edits the embed of a message with a much more tight function
     """
     embed = discord.Embed(title=title, description=description, color=color)
     if url_image:
         embed.set_image(url=url_image)
+
+    for field in fields:
+        embed.add_field(name=field[0], value=field[1], inline=field[2])
 
     return await message.edit(embed=embed)
 

@@ -176,7 +176,7 @@ class AdminCommand(user_commands.UserCommand):
         """
         args = eval(self.string)
         edit_msg = await self.invoke_msg.channel.fetch_message(
-            util.filter_id(args[0])
+            args[0]
         )
 
         if len(args) == 2:
@@ -199,12 +199,32 @@ class AdminCommand(user_commands.UserCommand):
                 args[3]
             )
         elif len(args) == 5:
+            if isinstance(args[4], list):
+                fields = util.get_embed_fields(args[4])
+                await util.edit_embed(
+                    edit_msg,
+                    args[1],
+                    args[2],
+                    args[3],
+                    fields=fields
+                )
+            else:
+                await util.edit_embed(
+                    edit_msg,
+                    args[1],
+                    args[2],
+                    args[3],
+                    args[4]
+                )
+        elif len(args) == 6:
+            fields = util.get_embed_fields(args[4])
             await util.edit_embed(
                 edit_msg,
                 args[1],
                 args[2],
                 args[3],
-                args[4]
+                args[4],
+                fields=fields
             )
         else:
             await util.edit_embed(
